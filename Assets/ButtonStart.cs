@@ -43,7 +43,7 @@ Debug.Log ("No TextMesh found!");
 	{
 		start.characterSize = characterSize;
 
-Debug.Log ("MouseExit");
+//Debug.Log ("MouseExit");
 	}
 
 

@@ -14,12 +14,7 @@ public class ParticleColorizer : MonoBehaviour {
 
 	void Update ()
 	{
-/*		Color color = new Color(
-								0.5f + 0.5f*Mathf.Sin(Time.time * 1.0f),
-		                        0.5f + 0.5f*Mathf.Sin(Time.time * 1.1f),
-		                        0.5f + 0.5f*Mathf.Sin(Time.time * 1.2f)
-		                        );
-*/		Color color = new Color(
+		Color color = new Color(
 								0.75f + 0.25f*Mathf.Sin(Time.time * 1.0f),
 		                        0.75f + 0.25f*Mathf.Cos(Time.time * 1.4f),
 		                        0.75f + 0.25f*Mathf.Sin(Time.time * 1.3f)

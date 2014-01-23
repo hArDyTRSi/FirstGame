@@ -43,7 +43,7 @@ public class ButtonQuit : MonoBehaviour
 	{
 		start.characterSize = characterSize;
 		
-		Debug.Log ("MouseExit");
+//		Debug.Log ("MouseExit");
 	}
 	
 	
