@@ -51,6 +51,7 @@
      <Compile Include="Assets\GenerateLevel.cs" />
      <Compile Include="Assets\MoneyBehaviour.cs" />
      <Compile Include="Assets\MoneyTracker.cs" />
+     <Compile Include="Assets\ParticleColorizer.cs" />
      <Compile Include="Assets\Scripts\EnemyAI.cs" />
      <Compile Include="Assets\Scripts\FireRocketProjectile.cs" />
      <Compile Include="Assets\Scripts\HasHealth.cs" />

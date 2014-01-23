@@ -1,8 +1,9 @@
 ﻿<Properties>
-  <MonoDevelop.Ide.Workspace />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
   <MonoDevelop.Ide.Workbench ActiveDocument="Assets\ButtonStart.cs">
     <Files>
-      <File FileName="Assets\ButtonStart.cs" Line="52" Column="26" />
+      <File FileName="Assets\ButtonStart.cs" Line="35" Column="33" />
+      <File FileName="Assets\ButtonQuit.cs" Line="22" Column="14" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
