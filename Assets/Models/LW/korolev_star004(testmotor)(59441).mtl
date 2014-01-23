@@ -1,0 +1,398 @@
+newmtl control_glass
+Ka 0 0 0
+Kd 0.352941 0.290196 0.254902
+Ks 0.298039 0.298039 0.298039
+Ni 1
+Ns 400
+Tf 1 1 1
+d 1
+map_Kd texture03_0001.png
+
+newmtl coque
+Ka 0 0 0
+Kd 0.352941 0.290196 0.254902
+Ks 0.298039 0.298039 0.298039
+Ni 1
+Ns 400
+Tf 1 1 1
+d 1
+map_Kd texture03_0001.png
+
+newmtl coque-top
+Ka 0 0 0
+Kd 0.352941 0.290196 0.254902
+Ks 0.298039 0.298039 0.298039
+Ni 1
+Ns 400
+Tf 1 1 1
+d 1
+map_Kd texture03_0001.png
+
+newmtl coque-top2
+Ka 0 0 0
+Kd 0.352941 0.290196 0.254902
+Ks 0.298039 0.298039 0.298039
+Ni 1
+Ns 400
+Tf 1 1 1
+d 1
+map_Kd texture03_0001.png
+
+newmtl deco
+Ka 0 0 0
+Kd 0.352941 0.290196 0.254902
+Ks 0.298039 0.298039 0.298039
+Ni 1
+Ns 400
+Tf 1 1 1
+d 1
+map_Kd texture03_0001.png
+
+newmtl deco-ship-name
+Ka 0 0 0
+Kd 0.352941 0.290196 0.254902
+Ks 0.298039 0.298039 0.298039
+Ni 1
+Ns 400
+Tf 1 1 1
+d 1
+map_Kd texture03_0001.png
+
+newmtl Logo_text
+Ka 0 0 0
+Kd 0.352941 0.290196 0.254902
+Ks 0.298039 0.298039 0.298039
+Ni 1
+Ns 400
+Tf 1 1 1
+d 1
+map_Kd texture03_0001.png
+
+newmtl lights
+Ka 0 0 0
+Kd 0.352941 0.290196 0.254902
+Ks 0.298039 0.298039 0.298039
+Ni 1
+Ns 400
+Tf 1 1 1
+d 1
+map_Kd texture03_0001.png
+
+newmtl Main-Armature
+Ka 0 0 0
+Kd 0.352941 0.290196 0.254902
+Ks 0.298039 0.298039 0.298039
+Ni 1
+Ns 400
+Tf 1 1 1
+d 1
+map_Kd texture03_0001.png
+
+newmtl passerelle
+Ka 0 0 0
+Kd 0.352941 0.290196 0.254902
+Ks 0.298039 0.298039 0.298039
+Ni 1
+Ns 400
+Tf 1 1 1
+d 1
+map_Kd texture03_0001.png
+
+newmtl reactor-blue01
+Ka 0 0 0
+Kd 0.352941 0.290196 0.254902
+Ks 0.298039 0.298039 0.298039
+Ni 1
+Ns 400
+Tf 1 1 1
+d 1
+map_Kd texture03_0001.png
+
+newmtl reactor-blue02
+Ka 0 0 0
+Kd 0.352941 0.290196 0.254902
+Ks 0.298039 0.298039 0.298039
+Ni 1
+Ns 400
+Tf 1 1 1
+d 1
+map_Kd texture03_0001.png
+
+newmtl reactor-blue03
+Ka 0 0 0
+Kd 0.352941 0.290196 0.254902
+Ks 0.298039 0.298039 0.298039
+Ni 1
+Ns 400
+Tf 1 1 1
+d 1
+
+newmtl reactor-blue04
+Ka 0 0 0
+Kd 0.352941 0.290196 0.254902
+Ks 0.298039 0.298039 0.298039
+Ni 1
+Ns 400
+Tf 1 1 1
+d 1
+map_Kd texture03_0001.png
+
+newmtl reactor-blue05
+Ka 0 0 0
+Kd 0.352941 0.290196 0.254902
+Ks 0.298039 0.298039 0.298039
+Ni 1
+Ns 400
+Tf 1 1 1
+d 1
+map_Kd texture03_0001.png
+
+newmtl reactor-fond
+Ka 0 0 0
+Kd 0.352941 0.290196 0.254902
+Ks 0.298039 0.298039 0.298039
+Ni 1
+Ns 400
+Tf 1 1 1
+d 1
+map_Kd texture03_0001.png
+
+newmtl reactor-main
+Ka 0 0 0
+Kd 0.352941 0.290196 0.254902
+Ks 0.298039 0.298039 0.298039
+Ni 1
+Ns 400
+Tf 1 1 1
+d 1
+map_Kd texture03_0001.png
+
+newmtl reactor-main2
+Ka 0 0 0
+Kd 0.352941 0.290196 0.254902
+Ks 0.298039 0.298039 0.298039
+Ni 1
+Ns 400
+Tf 1 1 1
+d 1
+map_Kd texture03_0001.png
+
+newmtl support_light
+Ka 0 0 0
+Kd 0.352941 0.290196 0.254902
+Ks 0.298039 0.298039 0.298039
+Ni 1
+Ns 400
+Tf 1 1 1
+d 1
+map_Kd texture03_0001.png
+
+newmtl Vitre
+Ka 0 0 0
+Kd 0.352941 0.290196 0.254902
+Ks 0.298039 0.298039 0.298039
+Ni 1
+Ns 400
+Tf 1 1 1
+d 1
+map_Kd texture03_0001.png
+
+newmtl control_glass
+Ka 0 0 0
+Kd 0.352941 0.290196 0.254902
+Ks 0.298039 0.298039 0.298039
+Ni 1
+Ns 400
+Tf 1 1 1
+d 1
+map_Kd texture03_0001.png
+
+newmtl coque
+Ka 0 0 0
+Kd 0.352941 0.290196 0.254902
+Ks 0.298039 0.298039 0.298039
+Ni 1
+Ns 400
+Tf 1 1 1
+d 1
+map_Kd texture03_0001.png
+
+newmtl coque-top
+Ka 0 0 0
+Kd 0.352941 0.290196 0.254902
+Ks 0.298039 0.298039 0.298039
+Ni 1
+Ns 400
+Tf 1 1 1
+d 1
+map_Kd texture03_0001.png
+
+newmtl coque-top2
+Ka 0 0 0
+Kd 0.352941 0.290196 0.254902
+Ks 0.298039 0.298039 0.298039
+Ni 1
+Ns 400
+Tf 1 1 1
+d 1
+map_Kd texture03_0001.png
+
+newmtl deco
+Ka 0 0 0
+Kd 0.352941 0.290196 0.254902
+Ks 0.298039 0.298039 0.298039
+Ni 1
+Ns 400
+Tf 1 1 1
+d 1
+map_Kd texture03_0001.png
+
+newmtl deco-ship-name
+Ka 0 0 0
+Kd 0.352941 0.290196 0.254902
+Ks 0.298039 0.298039 0.298039
+Ni 1
+Ns 400
+Tf 1 1 1
+d 1
+map_Kd texture03_0001.png
+
+newmtl Logo_text
+Ka 0 0 0
+Kd 0.352941 0.290196 0.254902
+Ks 0.298039 0.298039 0.298039
+Ni 1
+Ns 400
+Tf 1 1 1
+d 1
+map_Kd texture03_0001.png
+
+newmtl lights
+Ka 0 0 0
+Kd 0.352941 0.290196 0.254902
+Ks 0.298039 0.298039 0.298039
+Ni 1
+Ns 400
+Tf 1 1 1
+d 1
+map_Kd texture03_0001.png
+
+newmtl Main-Armature
+Ka 0 0 0
+Kd 0.352941 0.290196 0.254902
+Ks 0.298039 0.298039 0.298039
+Ni 1
+Ns 400
+Tf 1 1 1
+d 1
+map_Kd texture03_0001.png
+
+newmtl passerelle
+Ka 0 0 0
+Kd 0.352941 0.290196 0.254902
+Ks 0.298039 0.298039 0.298039
+Ni 1
+Ns 400
+Tf 1 1 1
+d 1
+map_Kd texture03_0001.png
+
+newmtl reactor-blue01
+Ka 0 0 0
+Kd 0.352941 0.290196 0.254902
+Ks 0.298039 0.298039 0.298039
+Ni 1
+Ns 400
+Tf 1 1 1
+d 1
+map_Kd texture03_0001.png
+
+newmtl reactor-blue02
+Ka 0 0 0
+Kd 0.352941 0.290196 0.254902
+Ks 0.298039 0.298039 0.298039
+Ni 1
+Ns 400
+Tf 1 1 1
+d 1
+map_Kd texture03_0001.png
+
+newmtl reactor-blue03
+Ka 0 0 0
+Kd 0.352941 0.290196 0.254902
+Ks 0.298039 0.298039 0.298039
+Ni 1
+Ns 400
+Tf 1 1 1
+d 1
+map_Kd texture03_0001.png
+
+newmtl reactor-blue04
+Ka 0 0 0
+Kd 0.352941 0.290196 0.254902
+Ks 0.298039 0.298039 0.298039
+Ni 1
+Ns 400
+Tf 1 1 1
+d 1
+map_Kd texture03_0001.png
+
+newmtl reactor-blue05
+Ka 0 0 0
+Kd 0.352941 0.290196 0.254902
+Ks 0.298039 0.298039 0.298039
+Ni 1
+Ns 400
+Tf 1 1 1
+d 1
+map_Kd texture03_0001.png
+
+newmtl reactor-fond
+Ka 0 0 0
+Kd 0.352941 0.290196 0.254902
+Ks 0.298039 0.298039 0.298039
+Ni 1
+Ns 400
+Tf 1 1 1
+d 1
+map_Kd texture03_0001.png
+
+newmtl reactor-main
+Ka 0 0 0
+Kd 0.352941 0.290196 0.254902
+Ks 0.298039 0.298039 0.298039
+Ni 1
+Ns 400
+Tf 1 1 1
+d 1
+map_Kd texture03_0001.png
+
+newmtl reactor-main2
+Ka 0 0 0
+Kd 0.352941 0.290196 0.254902
+Ks 0.298039 0.298039 0.298039
+Ni 1
+Ns 400
+Tf 1 1 1
+d 1
+
+newmtl support_light
+Ka 0 0 0
+Kd 0.352941 0.290196 0.254902
+Ks 0.298039 0.298039 0.298039
+Ni 1
+Ns 400
+Tf 1 1 1
+d 1
+map_Kd texture03_0001.png
+
+newmtl Vitre
+Ka 0 0 0
+Kd 0.352941 0.290196 0.254902
+Ks 0.298039 0.298039 0.298039
+Ni 1
+Ns 400
+Tf 1 1 1
+d 1
+map_Kd texture03_0001.png
+

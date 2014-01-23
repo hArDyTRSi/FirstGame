@@ -1,0 +1,231 @@
+newmtl control_glass
+Kd 0.352941 0.290196 0.254902
+Ke 0 0 0
+Ka 1 1 1
+Ks 0.3 0.3 0.3
+Ns 400
+Tr 0
+d 1
+Ni 1
+Tf 1 1 1
+
+newmtl coque
+Kd 0.266667 0.266667 0.266667
+Ke 0 0 0
+Ka 1 1 1
+Ks 0.15 0.15 0.15
+Ns 400
+Tr 0
+d 1
+Ni 1
+Tf 1 1 1
+
+newmtl coque-top
+Kd 0.266667 0.266667 0.266667
+Ke 0 0 0
+Ka 1 1 1
+Ks 0.15 0.15 0.15
+Ns 400
+Tr 0
+d 1
+Ni 1
+Tf 1 1 1
+
+newmtl coque-top2
+Kd 0.266667 0.266667 0.266667
+Ke 0 0 0
+Ka 1 1 1
+Ks 0.15 0.15 0.15
+Ns 400
+Tr 0
+d 1
+Ni 1
+Tf 1 1 1
+
+newmtl Default
+Kd 0.784314 0.784314 0.784314
+Ke 0 0 0
+Ka 1 1 1
+Ks 0 0 0
+Ns 400
+Tr 0
+d 1
+Ni 1
+Tf 1 1 1
+
+newmtl deco
+Kd 0.356863 0.211765 0.176471
+Ke 0 0 0
+Ka 1 1 1
+Ks 0.15 0.15 0.15
+Ns 400
+Tr 0
+d 1
+Ni 1
+Tf 1 1 1
+
+newmtl deco-ship-name
+Kd 0.356863 0.211765 0.176471
+Ke 0 0 0
+Ka 1 1 1
+Ks 0.15 0.15 0.15
+Ns 400
+Tr 0
+d 1
+Ni 1
+Tf 1 1 1
+
+newmtl Logo_text
+Kd 0.768627 0.768627 0.768627
+Ke 0 0 0
+Ka 1 1 1
+Ks 0 0 0
+Ns 400
+Tr 0
+d 1
+Ni 1
+Tf 1 1 1
+
+newmtl lights
+Kd 1 1 1
+Ke 0 0 0
+Ka 1 1 1
+Ks 0 0 0
+Ns 400
+Tr 0
+d 1
+Ni 1
+Tf 1 1 1
+
+newmtl Main-Armature
+Kd 0.682353 0.682353 0.682353
+Ke 0 0 0
+Ka 1 1 1
+Ks 0.15 0.15 0.15
+Ns 400
+Tr 0
+d 1
+Ni 1
+Tf 1 1 1
+
+newmtl passerelle
+Kd 0.188235 0.188235 0.188235
+Ke 0 0 0
+Ka 1 1 1
+Ks 0.3 0.3 0.3
+Ns 400
+Tr 0
+d 1
+Ni 1
+Tf 1 1 1
+
+newmtl reactor-blue01
+Kd 0.0666667 0.396078 0.576471
+Ke 0 0 0
+Ka 1 1 1
+Ks 0 0 0
+Ns 400
+Tr 0
+d 1
+Ni 1
+Tf 1 1 1
+
+newmtl reactor-blue02
+Kd 0.121569 0.623529 0.894118
+Ke 0 0 0
+Ka 1 1 1
+Ks 0 0 0
+Ns 400
+Tr 0
+d 1
+Ni 1
+Tf 1 1 1
+
+newmtl reactor-blue03
+Kd 0.517647 0.792157 0.941176
+Ke 0 0 0
+Ka 1 1 1
+Ks 0 0 0
+Ns 400
+Tr 0
+d 1
+Ni 1
+Tf 1 1 1
+
+newmtl reactor-blue04
+Kd 0.745098 0.890196 0.972549
+Ke 0 0 0
+Ka 1 1 1
+Ks 0 0 0
+Ns 400
+Tr 0
+d 1
+Ni 1
+Tf 1 1 1
+
+newmtl reactor-blue05
+Kd 1 1 1
+Ke 0 0 0
+Ka 1 1 1
+Ks 0 0 0
+Ns 400
+Tr 0
+d 1
+Ni 1
+Tf 1 1 1
+
+newmtl reactor-fond
+Kd 0.188235 0.188235 0.188235
+Ke 0 0 0
+Ka 1 1 1
+Ks 0 0 0
+Ns 400
+Tr 0
+d 1
+Ni 1
+Tf 1 1 1
+
+newmtl reactor-main
+Kd 0.360784 0.360784 0.360784
+Ke 0 0 0
+Ka 1 1 1
+Ks 0 0 0
+Ns 400
+Tr 0
+d 1
+Ni 1
+Tf 1 1 1
+
+newmtl reactor-main2
+Kd 0.2 0.2 0.2
+Ke 0 0 0
+Ka 1 1 1
+Ks 0 0 0
+Ns 400
+Tr 0
+d 1
+Ni 1
+Tf 1 1 1
+
+newmtl support_light
+Kd 0.176471 0.207843 0.2
+Ke 0 0 0
+Ka 1 1 1
+Ks 0 0 0
+Ns 400
+Tr 0
+d 1
+Ni 1
+Tf 1 1 1
+
+newmtl Vitre
+Kd 0.0980392 0.0980392 0.0980392
+Ke 0 0 0
+Ka 1 1 1
+Ks 0.15 0.15 0.15
+Ns 400
+Tr 0
+d 1
+Ni 1
+Tf 1 1 1
+
