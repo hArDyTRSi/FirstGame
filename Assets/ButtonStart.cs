@@ -3,17 +3,16 @@ using System.Collections;
 
 public class ButtonStart : MonoBehaviour
 {
-	public float characterSize = 0.42f;
-	public float zoomSize = 0.1f;
+	public float zoomAmount = 3.0f;
 	public float zoomSpeed = 5.0f;
 
-	private static TextMesh start = null ;
 	private float timer;
+	private TextMesh tm;
+
 
 	void Start()
 	{
-		start = this.GetComponent<TextMesh>();
-
+		tm = this.GetComponent<TextMesh>();
 	}
 
 
@@ -21,7 +20,6 @@ public class ButtonStart : MonoBehaviour
 	{
 		timer = 1.5f;
 
-//Debug.Log ("MouseEnter");
 	}
 
 
@@ -29,28 +27,21 @@ public class ButtonStart : MonoBehaviour
 	{
 		timer += zoomSpeed * Time.deltaTime;
 
-		if(!start)
-Debug.Log ("No TextMesh found!");
-		else
-			start.characterSize = characterSize + zoomSize * Mathf.Cos(timer);
+		tm.offsetZ = -zoomAmount * Mathf.Cos(timer);
 
-
-//Debug.Log ("MouseOver");
 	}
 
 
 	void OnMouseExit()
 	{
-		start.characterSize = characterSize;
+		tm.offsetZ = 0.0f;
 
-//Debug.Log ("MouseExit");
 	}
 
 
 	void OnMouseDown()
 	{
 		Application.LoadLevel(1);
-//		Application.Quit();
 	}
 	
 }
