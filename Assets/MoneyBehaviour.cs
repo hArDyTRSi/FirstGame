@@ -25,12 +25,21 @@ public class MoneyBehaviour : MonoBehaviour {
 			pos.y += 50f * Time.deltaTime;
 			transform.position = pos;
 
+// DOES THIS STILL WORK = ?=??
 			Color col = renderer.material.color;
 /*			col.r *= lifeTime/2f;
 			col.g *= lifeTime/2f;
 			col.b *= lifeTime/2f;
 */		col.a *= lifeTime/2f;
 			renderer.material.color = col;
+		}
+		else
+		if(lifeTime < 2.0f)
+		{
+			Vector3 pos= transform.position;
+			pos.y -= 200f * Time.deltaTime;
+			transform.position = pos;
+
 		}
 
 		lifeTime -= Time.deltaTime;

@@ -8,11 +8,12 @@ public class OnHitEvent : MonoBehaviour
 
 	public GameObject effectPrefab;
 
-	public AudioClip explosion;
+	public AudioClip audioExplosion;
 	
 //	FireRocketProjectile frp = null;
 	public GameObject destination = null;
 
+	private bool detonated = false;
 	
 	void Start()
 	{
@@ -51,14 +52,17 @@ Debug.Log ("OnCollisionEnter");
 	void Detonate()
 	{
 
-		Vector3 pos = transform.position;
-		pos.y = 5f;
+		if(!detonated)
+		{
+			Vector3 pos = transform.position;
+			pos.y = 2f;
 
-		// explosion
-		if(effectPrefab != null)
-//			Instantiate(effectPrefab, transform.position + transform.forward, Quaternion.identity);
-			Instantiate(effectPrefab, pos, Quaternion.identity);
+			// explosion
+			if(effectPrefab != null)
+				Instantiate(effectPrefab, pos, Quaternion.identity);
 
+			detonated = true;
+		}
 
 //		!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! 
 //		PUT ME BACK!!!!!
