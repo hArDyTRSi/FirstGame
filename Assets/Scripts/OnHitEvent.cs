@@ -43,7 +43,7 @@ Debug.Log ("OnCollisionEnter");
 //		if(objectHit.tag != "Bullet")
 //		if(objectHit.tag != "RocketProjectile")
 //		if(objectHit.tag == "Enemy")
-		if(objectHit.CompareTag("Enemy"))
+		if(objectHit.CompareTag("EnemyModel"))
 				Detonate();
 //Debug.Log ("OnTriggerEnter");
 	}
@@ -77,6 +77,7 @@ Debug.Log ("OnCollisionEnter");
 			}
 		}
 
+		// Destroy Rocket
  		Destroy(gameObject);
 	}
 }

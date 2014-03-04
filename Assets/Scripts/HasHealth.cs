@@ -31,7 +31,6 @@ public class HasHealth : MonoBehaviour {
 			if(!isDead)
 			{
 				// if Object is an "Enemy", spawn Object of type "Money"
-	//			if(gameObject.GetComponent<EnemyAI>() != null)
 				if(gameObject.CompareTag("Enemy"))
 				{
 					// Money
@@ -41,21 +40,32 @@ public class HasHealth : MonoBehaviour {
 					if(moneyPrefab != null)
 			//			Instantiate(moneyPrefab, transform.position + transform.forward, Quaternion.identity);
 						Instantiate(moneyPrefab, pos, Quaternion.identity);
-
 //				Debug.Log ("spawned MONEY!");
+
+					currentHealthPoints = 0.0f;			// unneeded!
+
+					gameObject.GetComponent<EnemyAI>().Die();
+//					Destroy(gameObject);
+					//				Debug.Log(this.gameObject.name + "is DEAD!");
+					
+					isDead = true;
+
+				
 				}
 			
-				currentHealthPoints = 0.0f;			// unneeded!
-				Destroy(gameObject);
-//				Debug.Log(this.gameObject.name + "is DEAD!");
-
-				isDead = true;
 			
 			}
 		}
 
 //		else
 //Debug.Log(this.gameObject.name + "has " + this.currentHealthPoints + " Health left. ");
+
+	}
+
+	void OnGUI()
+	{
+		if(gameObject.CompareTag("Player"))
+			GUI.Box(new Rect(10f, Screen.height - 40f, 100f,25f), "Life: " + currentHealthPoints + " / " + healthPoints);
 
 	}
 }

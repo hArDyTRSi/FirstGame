@@ -16,13 +16,16 @@ public class EnemyAI : MonoBehaviour {
 //	public Transform destination = null;
 	public Vector3 destination = Vector3.zero;
 
+	private float range = 0.0f;
 	private GameObject player = null;
+	private SpawnEnemies spawner = null;
 
 //##############################################
 	void Start()
 	{
 		player = GameObject.FindGameObjectWithTag("Player");
-	
+		range = GameObject.FindGameObjectWithTag("Level").GetComponent<GenerateLevel>().levelSize / 2.0f;
+		spawner = GameObject.FindGameObjectWithTag("Spawner").GetComponent<SpawnEnemies>();
 	}
 	
 //##############################################
@@ -34,9 +37,9 @@ public class EnemyAI : MonoBehaviour {
 
 			Quaternion lookRotation = Quaternion.identity;
 
-			int intMovement = (int)movement;
+//			int intMovement = (int)movement;
 
-			switch(intMovement)
+			switch((int)movement)
 			{
 			case 0:
 				// Move to Destination
@@ -47,6 +50,11 @@ public class EnemyAI : MonoBehaviour {
 
 				// Move towards Destination
 				transform.Translate(transform.forward * speedMovement * Time.deltaTime, Space.World);
+
+				// Remove Enemy if having left the playfield
+				if(Mathf.Abs(transform.position.x) > range + 1f || Mathf.Abs(transform.position.z) > range + 1f)
+					Die();
+
 				break;
 			case 1:
 				// Look at Player
@@ -73,4 +81,11 @@ public class EnemyAI : MonoBehaviour {
 */			}
 		}
 	}
+
+	public void Die()
+	{
+		spawner.enemiesAlive--;
+		Destroy(gameObject);
+	}
+
 }
