@@ -35,20 +35,18 @@ public class Movement : MonoBehaviour {
  			targetPoint.y = 0;
 
 			Quaternion targetRotation = Quaternion.LookRotation(targetPoint - transform.position);
-//			targetRotation = Quaternion.Euler(-90f, 0f, 0f) * targetRotation;
 
-//			shipModel.transform.rotation = Quaternion.Euler (-90f, 0f, 0f) * shipModel.transform.rotation;
+			if(shipModel !=null)
+			{
+				// Rotate towards MouseCursor
+//				shipModel.transform.rotation = Quaternion.Euler (-90f, 0f, 0f) * shipModel.transform.rotation;
+				shipModel.transform.rotation = Quaternion.Slerp(shipModel.transform.rotation, targetRotation, shipRotationSpeed * Time.deltaTime);
+//				transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, shipRotationSpeed * Time.deltaTime);
 
-			// Rotate towards MouseCursor
-			shipModel.transform.rotation = Quaternion.Slerp(shipModel.transform.rotation, targetRotation, shipRotationSpeed * Time.deltaTime);
-//			transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, shipRotationSpeed * Time.deltaTime);
-
-
-
-			// Move towards MouseCursor
-			transform.Translate(shipModel.transform.forward * shipSpeed * Time.deltaTime * (Mathf.Clamp(hitdist-camDistance*1.4f, 0, 20) / 10), Space.World);
-//			transform.Translate(transform.forward * shipSpeed * Time.deltaTime * (Mathf.Clamp(hitdist-camDistance*1.4f, 0f, 20f) / 10f), Space.World);
-	
+				// Move towards MouseCursor
+				transform.Translate(shipModel.transform.forward * shipSpeed * Time.deltaTime * (Mathf.Clamp(hitdist-camDistance*1.4f, 0, 20) / 10), Space.World);
+//				transform.Translate(transform.forward * shipSpeed * Time.deltaTime * (Mathf.Clamp(hitdist-camDistance*1.4f, 0f, 20f) / 10f), Space.World);
+			}	
 		}
 
 
