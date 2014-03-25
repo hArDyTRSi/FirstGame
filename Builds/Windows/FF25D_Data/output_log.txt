@@ -1,25 +1,28 @@
 Initialize engine version: 4.3.2f1 (0517a5ae8669)
 GfxDevice: creating device client; threaded=1
 Direct3D:
-    Version:  Direct3D 9.0c [aticfx64.dll 8.17.10.1191]
-    Renderer: ATI Radeon HD 5800 Series
+    Version:  Direct3D 9.0c [aticfx64.dll 8.17.10.1247]
+    Renderer: AMD Radeon HD 6900 Series
     Vendor:   ATI
-    VRAM:     1008 MB (via DXGI)
+    VRAM:     1007 MB (via DXGI)
     Caps:     Shader=30 DepthRT=1 NativeDepth=1 NativeShadow=1 DF16=1 INTZ=1 RAWZ=0 NULL=1 RESZ=1 SlowINTZ=1
 Begin MonoManager ReloadAssembly
 Platform assembly: F:\projekt\GitHub\FirstGame\Builds\Windows\FF25D_Data\Managed\UnityEngine.dll (this message is harmless)
 Loading F:\projekt\GitHub\FirstGame\Builds\Windows\FF25D_Data\Managed\UnityEngine.dll into Unity Child Domain
+Platform assembly: F:\projekt\GitHub\FirstGame\Builds\Windows\FF25D_Data\Managed\Assembly-CSharp-firstpass.dll (this message is harmless)
+Loading F:\projekt\GitHub\FirstGame\Builds\Windows\FF25D_Data\Managed\Assembly-CSharp-firstpass.dll into Unity Child Domain
 Platform assembly: F:\projekt\GitHub\FirstGame\Builds\Windows\FF25D_Data\Managed\Assembly-CSharp.dll (this message is harmless)
 Loading F:\projekt\GitHub\FirstGame\Builds\Windows\FF25D_Data\Managed\Assembly-CSharp.dll into Unity Child Domain
 Platform assembly: F:\projekt\GitHub\FirstGame\Builds\Windows\FF25D_Data\Managed\Assembly-UnityScript-firstpass.dll (this message is harmless)
 Loading F:\projekt\GitHub\FirstGame\Builds\Windows\FF25D_Data\Managed\Assembly-UnityScript-firstpass.dll into Unity Child Domain
-- Completed reload, in  0.049 seconds
+- Completed reload, in  0.044 seconds
 desktop: 1920x1080 60Hz; virtual: 1920x1080 at 0,0
 <RI> Initializing input.
 <RI> Input initialized.
-UnloadTime: 0.544030 ms
+Platform assembly: F:\projekt\GitHub\FirstGame\Builds\Windows\FF25D_Data\Managed\Boo.Lang.dll (this message is harmless)
+UnloadTime: 0.369715 ms
 Unloading 4 Unused Serialized files (Serialized files now loaded: 0 / Dirty serialized files: 0)
 
-Unloading 12 unused Assets to reduce memory usage. Loaded Objects now: 295.
-Total: 0.873513 ms (FindLiveObjects: 0.019156 ms CreateObjectMapping: 0.019156 ms MarkObjects: 0.133134 ms  DeleteObjects: 0.108550 ms)
+Unloading 12 unused Assets to reduce memory usage. Loaded Objects now: 378.
+Total: 0.476351 ms (FindLiveObjects: 0.012770 ms CreateObjectMapping: 0.011493 ms MarkObjects: 0.097377 ms  DeleteObjects: 0.056191 ms)
 

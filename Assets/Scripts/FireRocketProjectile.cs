@@ -22,7 +22,6 @@ public class FireRocketProjectile : MonoBehaviour
 		// private #thisinstance;	-> move #instances here at Awake();
 
 
-//		fireTimer = fireDelay;
 		fireTimer = Random.Range(0f, fireDelay);
 //Debug.Log ("Delay = " + fireTimer);
 	}
@@ -34,7 +33,7 @@ public class FireRocketProjectile : MonoBehaviour
 		if(fireTimer < 0.0f)
 		{
 			fireTimer = fireDelay;
-			Fire ();
+			Fire();
 		}
 	}
 

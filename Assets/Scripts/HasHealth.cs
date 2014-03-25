@@ -1,7 +1,8 @@
 using UnityEngine;
 using System.Collections;
 
-public class HasHealth : MonoBehaviour {
+public class HasHealth : MonoBehaviour
+{
 
 	public float healthPoints = 100.0f;
 	public float currentHealthPoints;
@@ -10,20 +11,15 @@ public class HasHealth : MonoBehaviour {
 	public float dropOffset = 1f;
 	public GameObject moneyPrefab;
 	public GameObject shipExplosion = null;
+	public AudioClip audioExplosion = null;
 
 	private bool isDead = false;
 
 
 	void Start()
 	{
-			currentHealthPoints = healthPoints;
+		currentHealthPoints = healthPoints;
 	}
-/*	
-	void Update()
-	{
-	
-	}
-*/
 
 
 	public void ReceiveDamage(float amount)
@@ -45,8 +41,8 @@ public class HasHealth : MonoBehaviour {
 
 					// spawn Object of type "Money"
 					if(moneyPrefab != null)
-					{
-						int randomLootAmount = (int)(Random.Range (1f, lootAmount));
+					{ 
+						int randomLootAmount = (int)(Random.Range(1, lootAmount));
 
 //						for(int i = 0; i<lootAmount; i++)
 						for(int i = 0; i<randomLootAmount; i++)
@@ -69,8 +65,11 @@ public class HasHealth : MonoBehaviour {
 
 					// EXPLOSION
 					if(shipExplosion)
+					{
 						Instantiate(shipExplosion, transform.position, Quaternion.identity);
-
+					
+						AudioSource.PlayClipAtPoint(audioExplosion, transform.position, 1.0f);
+					}
 //					currentHealthPoints = 0.0f;			// unneeded!
 
 					gameObject.GetComponent<EnemyAI>().Die();
@@ -95,7 +94,7 @@ public class HasHealth : MonoBehaviour {
 	void OnGUI()
 	{
 		if(gameObject.CompareTag("Player"))
-			GUI.Box(new Rect(10f, Screen.height - 40f, 100f,25f), "Life: " + currentHealthPoints + " / " + healthPoints);
+			GUI.Box(new Rect(10f, Screen.height - 40f, 100f, 25f), "Life: " + currentHealthPoints + " / " + healthPoints);
 
 	}
 }

@@ -4,21 +4,17 @@ using System.Collections;
 public class OnHitEvent : MonoBehaviour
 {
 	public float damage = 50.0f;
-//	public float explosionRadius = 20.0f;
 
 	public GameObject effectPrefab;
 
 	public AudioClip audioExplosion;
 	
-//	FireRocketProjectile frp = null;
 	public GameObject destination = null;
 
 	private bool detonated = false;
 	
 	void Start()
 	{
-//		frp = GameObject.FindGameObjectWithTag("Player").GetComponent<FireRocketProjectile>();
-//		re = frp.GetComponent<RocketEngine>();
 	}
 	
 /*	
@@ -45,7 +41,7 @@ Debug.Log ("OnCollisionEnter");
 //		if(objectHit.tag != "RocketProjectile")
 //		if(objectHit.tag == "Enemy")
 		if(objectHit.CompareTag("EnemyModel"))
-				Detonate();
+			Detonate();
 //Debug.Log ("OnTriggerEnter");
 	}
 
@@ -66,7 +62,7 @@ Debug.Log ("OnCollisionEnter");
 
 //		!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! 
 //		PUT ME BACK!!!!!
-//		AudioSource.PlayClipAtPoint(explosion, transform.position, 1.0f);
+		AudioSource.PlayClipAtPoint(audioExplosion, transform.position, 1.0f);
 		
 		// Decrease count of active Rockets
 //		frp.actualCount--;
@@ -75,13 +71,13 @@ Debug.Log ("OnCollisionEnter");
 		if(destination)
 		{
 			HasHealth h = destination.GetComponent<HasHealth>();
-			if(h !=null)
+			if(h != null)
 			{
 				h.ReceiveDamage(damage);
 			}
 		}
 
 		// Destroy Rocket
- 		Destroy(gameObject);
+		Destroy(gameObject);
 	}
 }
