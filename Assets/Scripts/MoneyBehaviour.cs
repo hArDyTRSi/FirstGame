@@ -3,28 +3,37 @@ using System.Collections;
 
 public class MoneyBehaviour : MonoBehaviour
 {
+//-------------------------------------------------------------------------------------------------
+//--- Public Fields
+
+public float lifeTime = 10.0f;
+
+public bool removed = false;
+
+
+//+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+//+++ Private Fields
+
+
+//#################################################################################################
+//### UnityEngine
+
+void Start()
+{
+}
 	
-	public float lifeTime = 10.0f;
 
-	public bool removed = false;
+void Update()
+{
+	float rotAmount = Time.time * 100f;
 
+	transform.rotation = Quaternion.Euler(0, rotAmount, 0);
 
-	void Start()
-	{
-	}
-	
-
-	void Update()
-	{
-		float rotAmount = Time.time * 100f;
-
-		transform.rotation = Quaternion.Euler(0, rotAmount, 0);
-
-		if(removed)
-		{ 
-			Vector3 pos = transform.position;
-			pos.y += 50f * Time.deltaTime;
-			transform.position = pos;
+	if(removed)
+	{ 
+		Vector3 pos = transform.position;
+		pos.y += 50f * Time.deltaTime;
+		transform.position = pos;
 /*
 // DOES THIS STILL WORK = ?=??
 			Color col = renderer.material.color;
@@ -34,33 +43,38 @@ public class MoneyBehaviour : MonoBehaviour
 			col.a *= lifeTime/2f;
 			renderer.material.color = col;
 */
-		}
-		else
-		if(lifeTime < 2.0f)
-			{
-				Vector3 pos = transform.position;
-				pos.y -= 200f * Time.deltaTime;
-				transform.position = pos;
-
-			}
-
-		lifeTime -= Time.deltaTime;
-		if(lifeTime < 0.0f)
-			Destroy(gameObject);
-
 	}
-
-
-	public void Remove()
+	else
+	if(lifeTime < 2.0f)
 	{
-		if(!removed)
-		{
-			// Add Money to Players Money
-			GameObject.FindGameObjectWithTag("Player").GetComponent<MoneyTracker>().AddMoney(1);
+		Vector3 pos = transform.position;
+		pos.y -= 200f * Time.deltaTime;
+		transform.position = pos;
 
-			lifeTime = 2f;
-			removed = true;
-		}
 	}
+
+	lifeTime -= Time.deltaTime;
+	if(lifeTime < 0.0f)
+	{
+		Destroy(gameObject);
+	}
+
+}
+
+
+//****************************************************************************************************
+//*** Functions
+
+public void Remove()
+{
+	if(!removed)
+	{
+		// Add Money to Players Money
+		GameObject.FindGameObjectWithTag("Player").GetComponent<MoneyTracker>().AddMoney(1);
+
+		lifeTime = 2f;
+		removed = true;
+	}
+}
 
 }

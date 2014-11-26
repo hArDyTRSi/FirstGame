@@ -3,81 +3,96 @@ using System.Collections;
 
 public class OnHitEvent : MonoBehaviour
 {
-	public float damage = 50.0f;
+//-------------------------------------------------------------------------------------------------
+//--- Public Fields
 
-	public GameObject effectPrefab;
+public float damage = 50.0f;
 
-	public AudioClip audioExplosion;
-	
-	public GameObject destination = null;
+public GameObject effectPrefab;
 
-	private bool detonated = false;
+public AudioClip audioExplosion;
 	
-	void Start()
-	{
-	}
-	
+public GameObject destination = null;
+public HasHealth destinationHealth = null;
+
+
+//+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+//+++ Private Fields
+
+//private bool detonated = false;
+
+
+//#################################################################################################
+//### UnityEngine
+
+/*
+void Start()
+{
+}
+*/	
 /*	
-	void FixedUpdate()
-	{
-//		Ray ray = new Ray(transform.position, transform.forward);
-//		if(Physics.Raycast(ray, re.rocketSpeed * Time.deltaTime))
-//			Detonate();
-
-	}
+void FixedUpdate()
+{
+//	Ray ray = new Ray(transform.position, transform.forward);
+//	if(Physics.Raycast(ray, re.rocketSpeed * Time.deltaTime))
+//		Detonate();
+}
 */
 
 /*
-	void OnCollisionEnter()
-	{
-		Detonate();
+void OnCollisionEnter()
+{
+	Detonate();
 Debug.Log ("OnCollisionEnter");
-	}
+}
 */
-	void OnTriggerEnter(Collider objectHit)
-	{
+
+/*
+void OnTriggerEnter(Collider objectHit)
+{
 //Debug.Log("Hit Object of type " + objectHit.tag);
-//		if(objectHit.tag != "Bullet")
-//		if(objectHit.tag != "RocketProjectile")
-//		if(objectHit.tag == "Enemy")
-		if(objectHit.CompareTag("EnemyModel"))
-			Detonate();
-//Debug.Log ("OnTriggerEnter");
-	}
+//	if(objectHit.tag != "Bullet")
+//	if(objectHit.tag != "RocketProjectile")
+//	if(objectHit.tag == "Enemy")
+	if(objectHit.CompareTag("EnemyModel"))
+		Detonate();
 
-	void Detonate()
+//	Debug.Log("OnTriggerEnter");
+}
+*/
+
+
+//****************************************************************************************************
+//*** Functions
+
+public void Detonate()
+{
+
+	Vector3 pos = transform.position;
+	pos.y = 2.0f;
+
+	// explosion -> particles
+	if(effectPrefab != null)
 	{
-
-		if(!detonated)
-		{
-			Vector3 pos = transform.position;
-			pos.y = 2f;
-
-			// explosion
-			if(effectPrefab != null)
-				Instantiate(effectPrefab, pos, Quaternion.identity);
-
-			detonated = true;
-		}
-
-//		!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! 
-//		PUT ME BACK!!!!!
-		AudioSource.PlayClipAtPoint(audioExplosion, transform.position, 1.0f);
-		
-		// Decrease count of active Rockets
-//		frp.actualCount--;
-
-		// Decrease Health of Destination
-		if(destination)
-		{
-			HasHealth h = destination.GetComponent<HasHealth>();
-			if(h != null)
-			{
-				h.ReceiveDamage(damage);
-			}
-		}
-
-		// Destroy Rocket
-		Destroy(gameObject);
+		Instantiate(effectPrefab, pos, Quaternion.identity);
 	}
+
+
+	// SOUND
+	AudioSource.PlayClipAtPoint(audioExplosion, transform.position, 1.0f);
+		
+
+	// Decrease Health of Destination
+	if(destination)
+	{
+		HasHealth h = destination.GetComponent<HasHealth>();
+		if(h != null)
+		{
+			h.ReceiveDamage(damage);
+		}
+	}
+
+	// Destroy Rocket
+	Destroy(gameObject);
+}
 }

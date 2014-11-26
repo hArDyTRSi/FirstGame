@@ -3,26 +3,41 @@ using System.Collections;
 
 public class MoneyTracker : MonoBehaviour
 {
+//-------------------------------------------------------------------------------------------------
+//--- Public Fields
 
-	public int actualMoney = 0;
+public int actualMoney = 0;
 
-	void Start()
-	{
 
-	}
-	
-	void Update()
-	{ 
-	} 
+//+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+//+++ Private Fields
 
-	void OnGUI()
-	{
-		GUI.Box(new Rect(10f, 10f, 100f, 25f), "Money: " + actualMoney);
-	}
 
-	public void AddMoney(int amount)
-	{
-		actualMoney += amount;
-	}
+//#################################################################################################
+//### UnityEngine
+/*
+void Start()
+{
+}
+*/
+/*
+void Update()
+{ 
+} 
+*/
+
+void OnGUI()
+{
+	GUI.Box(new Rect(10f, 10f, 100f, 25f), "Money: " + actualMoney);
+}
+
+
+//****************************************************************************************************
+//*** Functions
+
+public void AddMoney(int amount)
+{
+	actualMoney += amount;
+}
 
 }

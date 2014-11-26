@@ -3,42 +3,43 @@ using System.Collections;
 
 public class ButtonStart : MonoBehaviour
 {
-	public float zoomAmount = 3.0f;
-	public float zoomSpeed = 5.0f;
+public float zoomAmount = 3.0f;
+public float zoomSpeed = 5.0f;
 
-	private float timer;
-	private TextMesh tm;
-
-
-	void Start()
-	{
-		tm = this.GetComponent<TextMesh>();
-	}
+private float timer;
+private TextMesh textMesh;
 
 
-	void OnMouseEnter()
-	{
-		timer = 1.5f;
-	}
+void Start()
+{
+	textMesh = this.GetComponent<TextMesh>();
+}
 
 
-	void OnMouseOver()
-	{
-		timer += zoomSpeed * Time.deltaTime;
-
-		tm.offsetZ = -zoomAmount * Mathf.Cos(timer);
-	}
+void OnMouseEnter()
+{
+	timer = 1.5f;
+}
 
 
-	void OnMouseExit()
-	{
-		tm.offsetZ = 0.0f;
-	}
+void OnMouseOver()
+{
+	timer += zoomSpeed * Time.deltaTime;
+
+	textMesh.offsetZ = -zoomAmount * Mathf.Cos(timer);
+}
 
 
-	void OnMouseDown()
-	{
-		Application.LoadLevel(1);
-	}
+void OnMouseExit()
+{
+	textMesh.offsetZ = 0.0f;
+}
+
+
+void OnMouseDown()
+{
+	Global.global.gameOver = false;
+	Application.LoadLevel(1);
+}
 	
 }
