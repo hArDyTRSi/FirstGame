@@ -18,6 +18,8 @@ public AIMovement movement = 0;
 
 public Vector3 destination = Vector3.zero;
 
+public AudioClip audioCollision = null;
+
 
 //+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 //+++ Private Fields
@@ -26,7 +28,7 @@ private float range = 0.0f;
 private GameObject player = null;
 private HasHealth playerHealth = null;
 private HasHealth health = null;
-private SpawnEnemies spawner = null;
+private static SpawnEnemies spawner = null;
 
 
 //#################################################################################################
@@ -38,12 +40,23 @@ void Start()
 	playerHealth = player.GetComponent<HasHealth>();
 	health = gameObject.GetComponent<HasHealth>();
 	range = Global.global.levelSize / 2.0f;
-	spawner = GameObject.FindGameObjectWithTag("Spawner").GetComponent<SpawnEnemies>();
+
+	if(!spawner)
+	{
+		spawner = GameObject.FindGameObjectWithTag("Spawner").GetComponent<SpawnEnemies>();
+	}
 }
 
 
 void Update()
 {
+/*
+	if(health.realHealthPoints <= 0.0f)
+	{
+		// remove this enemy from global list of enemies
+		Global.global.enemiesAlive.Remove(gameObject);
+	}
+*/
 	if(player != null)
 	{
 		switch((int)movement)
@@ -70,6 +83,10 @@ void OnTriggerEnter(Collider objectHit)
 
 		// let player receive collision damage
 		playerHealth.ReceiveDamage(Global.global.collisionDamage);
+
+		// play collision-sound
+		AudioSource.PlayClipAtPoint(audioCollision, transform.position, 1.0f);
+
 	}
 
 
@@ -127,7 +144,12 @@ void Movement_FollowPlayer()
 public void Die()
 {
 	spawner.enemiesAlive--;
+	
+	// remove this enemy from global list of enemies
+	Global.global.enemiesAlive.Remove(gameObject);
+
 	Destroy(gameObject);
+//	Destroy(gameObject, 0.1f);
 }
 
 }

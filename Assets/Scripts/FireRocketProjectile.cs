@@ -8,14 +8,16 @@ public class FireRocketProjectile : MonoBehaviour
 
 public float spawnProjectileOffset = 0.5f;
 public float fireDelay = 1.0f;
+public float fireTimer = 1.0f;
 
 public GameObject rocketPrefab;
 
+public AudioClip audioRocketlaunch = null;
 
 //+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 //+++ Private Fields
 
-private float fireTimer;
+//private float fireTimer;
 
 
 //#################################################################################################
@@ -23,17 +25,7 @@ private float fireTimer;
 
 void Start()
 {
-	
-
-	// TODO:	keep track of which # of instance this is and take
-	//			#instance / #launchers * fireDelay
-	//			as initial delay ;)
-	// static #instances = 0;	-> add #1 for every instance of this class at Awake();
-	// private #thisinstance;	-> move #instances here at Awake();
-
-
-	fireTimer = Random.Range(0f, fireDelay);
-//Debug.Log ("Delay = " + fireTimer);
+//	fireTimer = Random.Range(0f, fireDelay);
 }
 
 	
@@ -59,15 +51,25 @@ void Fire()
 //TODO: keep list of "enemiesAlive" (!!!) to avoid the next line! -> global
 // "isDead" in HasHealth maybe useful
 
-	GameObject[] targets = GameObject.FindGameObjectsWithTag("Enemy");
-	foreach(GameObject t in targets)
+//	GameObject[] targets = GameObject.FindGameObjectsWithTag("Enemy");
+//	foreach(GameObject t in targets)
+	foreach(GameObject t in Global.global.enemiesAlive)
 	{
-		float dist = Vector3.Distance(transform.position, t.transform.position);
-		if(dist < closestDist)
+		//TODO: watch out for missing objects in Global-enemiesAlive-list in inspector
+		// make sure the object still exists
+		// Theres a bug, sometimes an object gets missing, most likely when it leaves the playfield
+		//   check EnemyAI.Movement_AtoB -> Die()
+		if(t)
 		{
-			target = t;
-			closestDist = dist;
+
+			float dist = Vector3.Distance(transform.position, t.transform.position);
+			if(dist < closestDist)
+			{
+				target = t;
+				closestDist = dist;
+			}
 		}
+			
 	}
 
 	if(target != null)
@@ -75,10 +77,24 @@ void Fire()
 		GameObject rocketInstance = Instantiate(rocketPrefab, transform.position + transform.forward * spawnProjectileOffset, transform.rotation) as GameObject;
 		rocketInstance.GetComponent<RocketEngineSeeker>().destination = target;
 		rocketInstance.GetComponent<OnHitEvent>().destination = target;
-//			count++;
-//			actualCount++;
 
-		//TODO: check if rocket will kill enemy, if so, set its deathFlag and remove it from "enemiesAlive"
+		// play launch-sound
+		AudioSource.PlayClipAtPoint(audioRocketlaunch, transform.position, 1.0f);
+
+
+		//TODO: check if rocket will kill enemy, if so remove it from "enemiesAlive"-list
+		target.GetComponent<HasHealth>().realHealthPoints -= rocketInstance.GetComponent<OnHitEvent>().damage;
+
+		if(target.GetComponent<HasHealth>().realHealthPoints <= 0.0f)
+		{
+			Global.global.enemiesAlive.Remove(target);
+		}
+/*
+		float targetRealHealth = target.GetComponent<HasHealth>().realHealthPoints;
+
+		targetRealHealth -= rocketInstance.GetComponent<OnHitEvent>().damage;
+		if(targetRealHealth)
+*/
 	}
 
 }

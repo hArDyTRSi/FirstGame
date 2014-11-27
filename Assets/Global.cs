@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 public class Global : MonoBehaviour
 {
@@ -16,6 +17,7 @@ public float invulnerabilityTimeSpan = 1.0f;
 
 public bool gameOver = false;
 
+public List<GameObject> enemiesAlive = null;
 
 //+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 //+++ Private Fields
@@ -29,6 +31,8 @@ void Awake()
 	global = this;
 		
 	gameOver = true;
+
+	enemiesAlive.Clear();	//.RemoveAll(GameObject);
 }
 	
 //****************************************************************************************************

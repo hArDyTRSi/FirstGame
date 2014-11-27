@@ -88,10 +88,13 @@ void SpawnEnemy()
 						(leftOrRight) ? range : -range
 	);
 		
-	GameObject e = Instantiate(enemy, startPosition, Quaternion.identity) as GameObject;
-	e.GetComponent<EnemyAI>().destination = destinatedPosition;
-	//			e.GetComponent<EnemyAI>().movement = 0; // AtoB --> globalize AIMovement-enum to use here aswell!
+	GameObject enemyInstance = Instantiate(enemy, startPosition, Quaternion.identity) as GameObject;
+	enemyInstance.GetComponent<EnemyAI>().destination = destinatedPosition;
+//	enemy.GetComponent<EnemyAI>().movement = 0; // AtoB --> globalize AIMovement-enum to use here aswell!
 		
 	enemiesAlive++;
+
+	// add this enemy to the global list of enemies
+	Global.global.enemiesAlive.Add(enemyInstance);
 }
 }
