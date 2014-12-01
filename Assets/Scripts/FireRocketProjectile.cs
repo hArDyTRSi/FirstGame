@@ -13,6 +13,7 @@ public float fireTimer = 1.0f;
 public GameObject rocketPrefab;
 
 public AudioClip audioRocketlaunch = null;
+//public GameObject audioRocketlaunch = null;	// change, so this can be instantiated in "_INSTANCES"-folder
 
 //+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 //+++ Private Fields
@@ -48,20 +49,10 @@ void Fire()
 
 	float closestDist = Mathf.Infinity;
 		
-//TODO: keep list of "enemiesAlive" (!!!) to avoid the next line! -> global
-// "isDead" in HasHealth maybe useful
-
-//	GameObject[] targets = GameObject.FindGameObjectsWithTag("Enemy");
-//	foreach(GameObject t in targets)
-	foreach(GameObject t in Global.global.enemiesAlive)
+	foreach(GameObject t in Global.global.targetableEnemies)
 	{
-		//TODO: watch out for missing objects in Global-enemiesAlive-list in inspector
-		// make sure the object still exists
-		// Theres a bug, sometimes an object gets missing, most likely when it leaves the playfield
-		//   check EnemyAI.Movement_AtoB -> Die()
-		if(t)
+		if(t != null)
 		{
-
 			float dist = Vector3.Distance(transform.position, t.transform.position);
 			if(dist < closestDist)
 			{
@@ -69,7 +60,7 @@ void Fire()
 				closestDist = dist;
 			}
 		}
-			
+
 	}
 
 	if(target != null)
@@ -77,24 +68,21 @@ void Fire()
 		GameObject rocketInstance = Instantiate(rocketPrefab, transform.position + transform.forward * spawnProjectileOffset, transform.rotation) as GameObject;
 		rocketInstance.GetComponent<RocketEngineSeeker>().destination = target;
 		rocketInstance.GetComponent<OnHitEvent>().destination = target;
+		rocketInstance.transform.parent = Global.global.instanceFolder;
+
 
 		// play launch-sound
+		//TODO: instantiate as prefab
 		AudioSource.PlayClipAtPoint(audioRocketlaunch, transform.position, 1.0f);
+//		GameObject audio = Instantiate(audioRocketlaunch, transform.position, Quaternion.identity);
+//		audio.transform.parent = Global.global.instanceFolder;
 
 
-		//TODO: check if rocket will kill enemy, if so remove it from "enemiesAlive"-list
-		target.GetComponent<HasHealth>().realHealthPoints -= rocketInstance.GetComponent<OnHitEvent>().damage;
+		// check if rocket will kill enemy, if so remove it from "enemiesAlive"-list
+		HasHealth targetHasHealth = target.GetComponent<HasHealth>();
+		targetHasHealth.incomingDamage += rocketInstance.GetComponent<OnHitEvent>().damage;
+		targetHasHealth.CheckForAlmostDead();
 
-		if(target.GetComponent<HasHealth>().realHealthPoints <= 0.0f)
-		{
-			Global.global.enemiesAlive.Remove(target);
-		}
-/*
-		float targetRealHealth = target.GetComponent<HasHealth>().realHealthPoints;
-
-		targetRealHealth -= rocketInstance.GetComponent<OnHitEvent>().damage;
-		if(targetRealHealth)
-*/
 	}
 
 }

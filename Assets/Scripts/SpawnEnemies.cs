@@ -9,7 +9,7 @@ public class SpawnEnemies : MonoBehaviour
 public int howManyMobs = 20;
 public int enemiesAlive;
 
-public GameObject enemy;
+public GameObject enemy = null;
 
 
 //+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
@@ -43,7 +43,8 @@ void Update()
 
 void OnGUI()
 {
-	GUI.Box(new Rect(10f, Screen.height / 2, 100f, 25f), "Enemies: " + enemiesAlive);
+	// show how many enemies are in the scene
+	GUI.Box(new Rect(10.0f, Screen.height / 2.0f, 100.0f, 25.0f), "Enemies: " + enemiesAlive);
 }
 
 
@@ -52,21 +53,10 @@ void OnGUI()
 
 void SpawnEnemy()
 {
-/*
-			//		Vector3 offset = new Vector3(Random.Range(-range, range), 0.0f, Random.Range(-range, range));
-//			Instantiate(enemy, offset, Quaternion.identity);
-
-			float distance = Random.Range(100.0f, range);
-//			Vector3 angle = new Vector3(Random.Range(-1.0f, 1.0f), 0.0f, Random.Range(-1.0f, 1.0f));
-			Vector3 angle = new Vector3(Random.Range(-1.0f, 1.0f), 0.0f, Random.Range(-1.0f, 1.0f)).normalized;
-			Instantiate(enemy, angle * distance, Quaternion.identity);
-*/
+	// find a spawn position
 	bool sideOrUpways = System.Convert.ToBoolean((int)(Random.value * 99.0f) % 2);
-	//Debug.Log("sideOrUpways =" + sideOrUpways);
 	bool upOrDown = System.Convert.ToBoolean((int)(Random.value * 99.0f) % 2);
-	//Debug.Log("upOrDown =" + upOrDown);
 	bool leftOrRight = System.Convert.ToBoolean((int)(Random.value * 99.0f) % 2);
-	//Debug.Log("leftOrRight =" + leftOrRight);
 		
 	Vector3 startPosition = (sideOrUpways) ?
 			new Vector3((upOrDown) ? -range : range,
@@ -87,14 +77,18 @@ void SpawnEnemy()
 			            0.0f,
 						(leftOrRight) ? range : -range
 	);
-		
+
+	// spawn at newly found position
 	GameObject enemyInstance = Instantiate(enemy, startPosition, Quaternion.identity) as GameObject;
 	enemyInstance.GetComponent<EnemyAI>().destination = destinatedPosition;
-//	enemy.GetComponent<EnemyAI>().movement = 0; // AtoB --> globalize AIMovement-enum to use here aswell!
-		
+	enemyInstance.transform.parent = Global.global.instanceFolder;
+
+	// keep track of number of enemies in the scene
 	enemiesAlive++;
 
-	// add this enemy to the global list of enemies
-	Global.global.enemiesAlive.Add(enemyInstance);
+	// add this enemy to the global list of targetable enemies
+	Global.global.targetableEnemies.Add(enemyInstance);
+//	Debug.Log("added enemy to list");
+
 }
 }

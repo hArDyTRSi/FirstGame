@@ -74,7 +74,8 @@ public void Detonate()
 	// explosion -> particles
 	if(effectPrefab != null)
 	{
-		Instantiate(effectPrefab, pos, Quaternion.identity);
+		GameObject explosionInstance = Instantiate(effectPrefab, pos, Quaternion.identity) as GameObject;
+		explosionInstance.transform.parent = Global.global.instanceFolder;
 	}
 
 

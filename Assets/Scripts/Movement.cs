@@ -45,7 +45,7 @@ void Update()
 	if(playerPlane.Raycast(ray, out hitdist))
 	{
 		Vector3 targetPoint = ray.GetPoint(hitdist);
-		targetPoint.y = 0;
+		targetPoint.y = 0.0f;
 
 		Quaternion targetRotation = Quaternion.LookRotation(targetPoint - transform.position);
 
@@ -57,7 +57,7 @@ void Update()
 //				transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, shipRotationSpeed * Time.deltaTime);
 
 			// Move towards MouseCursor
-			transform.Translate(shipModel.transform.forward * shipSpeed * Time.deltaTime * (Mathf.Clamp(hitdist - camDistance * 1.4f, 0, 20) / 10), Space.World);
+			transform.Translate(shipModel.transform.forward * shipSpeed * Time.deltaTime * (Mathf.Clamp(hitdist - camDistance * 1.4f, 0.0f, 20.0f) / 10.0f), Space.World);
 //				transform.Translate(transform.forward * shipSpeed * Time.deltaTime * (Mathf.Clamp(hitdist-camDistance*1.4f, 0f, 20f) / 10f), Space.World);
 		}	
 	}
@@ -95,7 +95,7 @@ void CollectMoney()
 		float dist = Vector3.Distance(transform.position, c.transform.position);
 
 		// MAGNET
-		if(dist < 25f * magnetLevel)
+		if(dist < 25.0f * magnetLevel)
 		{
 			if(!c.GetComponent<MoneyBehaviour>().removed)
 			{
@@ -103,7 +103,7 @@ void CollectMoney()
 			}
 		}
 			
-		if(dist < 10f)
+		if(dist < 10.0f)
 		{
 			c.GetComponent<MoneyBehaviour>().Remove();
 		}

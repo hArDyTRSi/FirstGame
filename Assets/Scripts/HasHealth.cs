@@ -8,24 +8,20 @@ public class HasHealth : MonoBehaviour
 
 public float healthPoints = 100.0f;
 public float currentHealthPoints;
-public float realHealthPoints;
+public float incomingDamage = 0.0f;
 
 public int lootAmount = 1;
-public float dropOffset = 1f;
+public float dropOffset = 1.0f;
 public GameObject moneyPrefab;
 public GameObject shipExplosion = null;
 public AudioClip audioExplosion = null;
 
-//TODO: check why this is autoformatted that strange!
-//TODO: Turn on Sound again!!!!
-[Range(0.0f,1.0f)]
-public float
-	audioVolume = 1.0f;
 
 //+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 //+++ Private Fields
 
 private bool isDead = false;
+private bool isAlmostDead = false;
 private bool amEnemy = false;
 private float invulnerable = 1.0f;
 
@@ -37,7 +33,6 @@ private static SpawnEnemies spawner = null;
 void Start()
 {
 	currentHealthPoints = healthPoints;
-	realHealthPoints = healthPoints;
 
 	if(gameObject.CompareTag("Enemy"))
 	{
@@ -55,43 +50,17 @@ void Start()
 void Update()
 {
 	invulnerable -= Time.deltaTime;
-/*
-	if(amEnemy && realHealthPoints <= 0.0f)
-//	if(realHealthPoints <= 0.0f)
-	{
-		// remove this enemy from global list of enemies
-		Global.global.enemiesAlive.Remove(gameObject);
-	}
-*/
+
+//	CheckForAlmostDead();
 }
 
 
 void OnGUI()
 {
-//	if(gameObject.CompareTag("Player"))
+	// show player health on screen (dont show for enemies)
 	if(!amEnemy)
 	{
-		GUI.Box(new Rect(10f, Screen.height - 40f, 100f, 25f), "Life: " + currentHealthPoints + " / " + healthPoints);
-
-
-		AudioListener.volume = audioVolume;
-/*
-		if(AudioListener.volume != 0)
-		{
-			if(GUI.Button(new Rect(10, 10, 60, 30), "Off"))
-			{
-				AudioListener.volume = 0;
-			}
-		}
-		else
-		if(AudioListener.volume == 0)
-		{
-			if(GUI.Button(new Rect(10, 10, 60, 30), "On"))
-			{
-				AudioListener.volume = 100;
-			}
-		}
-*/	
+		GUI.Box(new Rect(10.0f, Screen.height - 40.0f, 100.0f, 25.0f), "Life: " + currentHealthPoints + " / " + healthPoints);
 	}
 
 }
@@ -105,14 +74,17 @@ public void ReceiveDamage(float amount)
 	// if this is the players health, check if still in invulnerable time period
 	if(!amEnemy)
 	{
+		// still invulnerable? -> do nothing
 		if(invulnerable > 0.0f)
 		{
 			return;
 		}
 		else
+	// else receive damage!
 		{
-//			currentHealthPoints -= collisionDamage;
 			currentHealthPoints -= amount;
+			
+			// reset invulnerability time span
 			invulnerable = Global.global.invulnerabilityTimeSpan;
 			return;
 		}
@@ -121,7 +93,11 @@ public void ReceiveDamage(float amount)
 	// decrease HP
 	currentHealthPoints -= amount;
 
-	// if Enemy dead:
+	// check if needs to be removed from global list of enemies
+	CheckForAlmostDead();
+
+
+	// check if dead:
 	if(currentHealthPoints <= 0.0f)
 	{
 		// if this is the players health the game is over!
@@ -134,68 +110,78 @@ public void ReceiveDamage(float amount)
 		if(!isDead)
 		{
 			// if Object is an "Enemy"
-			//				if(gameObject.CompareTag("Enemy"))
-			if(amEnemy)
+//			if(amEnemy)
+//			{
+			// Money spawn position
+			Vector3 pos = transform.position;
+			pos.y = 2f;
+			
+			// spawn Object of type "Money"
+			if(moneyPrefab != null)
 			{
-				// Money spawn position
-				Vector3 pos = transform.position;
-				pos.y = 2f;
-			
-				// spawn Object of type "Money"
-				if(moneyPrefab != null)
-				{
-					// spawn 1 to "lootAmount" instances of money
-					int randomLootAmount = (int)(Random.Range(1, lootAmount));
+				// spawn 1 to "lootAmount" instances of money
+				int randomLootAmount = (int)(Random.Range(1, lootAmount));
 				
-//					for(int i = 0; i<lootAmount; i++)
-					for(int i = 0; i<randomLootAmount; i++)
-					{
-/*						Vector3 offPos = pos;
-						pos.x += Random.Range(-dropOffset, dropOffset);
-						pos.z += Random.Range(-dropOffset, dropOffset);
-							
-						Instantiate(moneyPrefab, offPos, Quaternion.identity);
-*/
-						Vector3 destPos = pos;
-						destPos.x += Random.Range(-dropOffset, dropOffset);
-						destPos.z += Random.Range(-dropOffset, dropOffset);
+				for(int i = 0; i < randomLootAmount; i++)
+				{
+					Vector3 destPos = pos;
+					destPos.x += Random.Range(-dropOffset, dropOffset);
+					destPos.z += Random.Range(-dropOffset, dropOffset);
 					
-						GameObject m = Instantiate(moneyPrefab, pos, Quaternion.identity) as GameObject;
-						m.GetComponent<Repositioner>().destination = destPos;
-					}
-//				Debug.Log ("spawned MONEY!");
-				}
-			
-				// EXPLOSION (particles)
-				if(shipExplosion)
-				{
-					Instantiate(shipExplosion, transform.position, Quaternion.identity);
-				
-					//TODO: maybe set loudness of explosion to amount of damage
-					//       if 3D-Audio does not work out!
-					// play explosion sound
-					AudioSource.PlayClipAtPoint(audioExplosion, transform.position, 1.0f);
-				}
-				
-				//TODO: check if code in "Die()" can be executed from here!
-//				gameObject.GetComponent<EnemyAI>().Die();
-				Die();
+					GameObject m = Instantiate(moneyPrefab, pos, Quaternion.identity) as GameObject;
+					m.GetComponent<Repositioner>().destination = destPos;
+					m.transform.parent = Global.global.instanceFolder;
 
-				// prevents this code to be triggered more than once
-				isDead = true;
+				}
+//				Debug.Log ("spawned MONEY!");
+			}
+			
+			// EXPLOSION (particles)
+			if(shipExplosion)
+			{
+				GameObject explosion = Instantiate(shipExplosion, transform.position, Quaternion.identity) as GameObject;
+				explosion.transform.parent = Global.global.instanceFolder;
+
+				// play explosion sound
+				AudioSource.PlayClipAtPoint(audioExplosion, transform.position, 1.0f);
 
 			}
+				
+			Die();
+
+			// prevents this code to be triggered more than once
+			isDead = true;
+
+//			}
 		}
 	}
 }
 
 
-private void Die()
+public void CheckForAlmostDead()
+{
+	if(isAlmostDead)
+	{
+		return;
+	}
+
+//	if(amEnemy && currentHealthPoints - incomingDamage <= 0.0f)
+
+	float futureHealth = currentHealthPoints - incomingDamage;
+	if(futureHealth <= 0.0f)
+	{
+		// remove this enemy from global list of targetable enemies
+		Global.global.targetableEnemies.Remove(gameObject);
+
+		isAlmostDead = true;
+//		Debug.Log("removed enemy from list: " + gameObject.name.ToString());
+	}
+}
+
+
+public void Die()
 {
 	spawner.enemiesAlive--;
-		
-	// remove this enemy from global list of enemies
-	//	Global.global.enemiesAlive.Remove(gameObject);
 		
 	Destroy(gameObject);
 	//	Destroy(gameObject, 0.1f);

@@ -54,9 +54,12 @@ void Update()
 	if(health.realHealthPoints <= 0.0f)
 	{
 		// remove this enemy from global list of enemies
-		Global.global.enemiesAlive.Remove(gameObject);
+//		Global.global.enemiesAlive.Remove(gameObject);
+		Global.global.RemoveEnemyFromList(gameObject);
 	}
 */
+
+
 	if(player != null)
 	{
 		switch((int)movement)
@@ -80,6 +83,7 @@ void OnTriggerEnter(Collider objectHit)
 	{
 		// receive collision damage
 		health.ReceiveDamage(Global.global.collisionDamage);
+//		health.CheckForAlmostDead();
 
 		// let player receive collision damage
 		playerHealth.ReceiveDamage(Global.global.collisionDamage);
@@ -120,9 +124,16 @@ void Movement_AtoB()
 	// Remove Enemy if having left the playfield
 	if(Mathf.Abs(transform.position.x) > range + 1f || Mathf.Abs(transform.position.z) > range + 1f)
 	{
-		Die();
+		// remove from list of targetable enemies
+		Global.global.targetableEnemies.Remove(gameObject);
+
+		// destroy this enemy
+		//Die();
+		health.Die();
+
 	}
 }
+
 
 void Movement_FollowPlayer()
 {
@@ -137,19 +148,7 @@ void Movement_FollowPlayer()
 
 	// Move towards Player
 	transform.Translate(transform.forward * speedMovement * Time.deltaTime, Space.World);
-//Debug.DrawLine(player.transform.position, transform.position, Color.red);
-}
-
-
-public void Die()
-{
-	spawner.enemiesAlive--;
-	
-	// remove this enemy from global list of enemies
-	Global.global.enemiesAlive.Remove(gameObject);
-
-	Destroy(gameObject);
-//	Destroy(gameObject, 0.1f);
+//	Debug.DrawLine(player.transform.position, transform.position, Color.red);
 }
 
 }

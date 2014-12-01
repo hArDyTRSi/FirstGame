@@ -104,10 +104,8 @@ void Update()
 		
 	lifeTime -= Time.deltaTime;
 		
-	if(lifeTime < 0)
+	if(lifeTime < 0.0f)
 	{
-//			frp.DecreaseCount();
-//			frp.actualCount--;
 		Destroy(gameObject);
 	}
 

@@ -46,17 +46,17 @@
 	</Reference>
   </ItemGroup>
   <ItemGroup>
-     <Compile Include="Assets\Global.cs" />
-     <Compile Include="Assets\OnGUIfps.cs" />
      <Compile Include="Assets\Scripts\ButtonQuit.cs" />
      <Compile Include="Assets\Scripts\ButtonStart.cs" />
      <Compile Include="Assets\Scripts\EnemyAI.cs" />
      <Compile Include="Assets\Scripts\FireRocketProjectile.cs" />
      <Compile Include="Assets\Scripts\GenerateLevel.cs" />
+     <Compile Include="Assets\Scripts\Global.cs" />
      <Compile Include="Assets\Scripts\HasHealth.cs" />
      <Compile Include="Assets\Scripts\MoneyBehaviour.cs" />
      <Compile Include="Assets\Scripts\MoneyTracker.cs" />
      <Compile Include="Assets\Scripts\Movement.cs" />
+     <Compile Include="Assets\Scripts\OnGUIfps.cs" />
      <Compile Include="Assets\Scripts\OnHitEvent.cs" />
      <Compile Include="Assets\Scripts\ParticleColorizer.cs" />
      <Compile Include="Assets\Scripts\Repositioner.cs" />
